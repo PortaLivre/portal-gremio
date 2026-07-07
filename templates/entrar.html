@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Área Administrativa
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="card">
+
+    <h2>🔒 Área Administrativa</h2>
+
+    <p>Digite a senha para acessar o painel.</p>
+
+    {% if erro %}
+
+<p style="color:red; margin-bottom:15px;">
+    {{ erro }}
+</p>
+
+{% endif %}
+
+    <form method="POST">
+
+        <input
+            type="password"
+            name="senha"
+            placeholder="Senha"
+            required
+        >
+
+        <button type="submit">
+            Entrar
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

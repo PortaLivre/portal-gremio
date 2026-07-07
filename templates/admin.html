@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Painel Administrativo
+{% endblock %}
+
+{% block conteudo %}
+
+<a href="/sair">
+    <button>Sair do Painel</button>
+</a>
+
+<div class="card">
+
+    <h2>Painel Administrativo</h2>
+
+    <form method="POST">
+
+        <label>Título</label>
+
+        <input
+    type="text"
+    name="titulo"
+    placeholder="Digite o título do aviso"
+    required>
+
+        <label>Descrição</label>
+
+        <textarea
+    rows="5"
+    name="descricao"
+    placeholder="Digite o aviso"
+    required
+></textarea>
+
+<hr>
+
+<h2>Avisos publicados</h2>
+
+{% for aviso in avisos %}
+
+<div class="card">
+
+    <h3>{{ aviso.titulo }}</h3>
+
+    <p>{{ aviso.descricao }}</p>
+
+</div>
+
+{% endfor %}
+
+
+        <button type="submit">
+            Publicar Aviso
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

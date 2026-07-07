@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Portal Grêmio{% endblock %}</title>
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#0057b8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+
+<button id="installBtn" style="display:none;">
+    📲 Instalar Portal Grêmio
+</button>
+
+<script>
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    document.getElementById("installBtn").style.display = "block";
+});
+
+document.getElementById("installBtn").addEventListener("click", async () => {
+
+    document.getElementById("installBtn").style.display = "none";
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+});
+</script>
+
+
+
+<body>
+
+    <header>
+        <h1>Portal Grêmio</h1>
+        <p>Bem-vindo ao portal oficial do Grêmio Estudantil.</p>
+    </header>
+
+    <main>
+
+        {% block conteudo %}
+        {% endblock %}
+
+    </main>
+
+    <nav class="bottom-nav">
+
+        <a href="/">🏠<span>Início</span></a>
+
+        <a href="/eventos">📅<span>Eventos</span></a>
+
+        <a href="/noticias">📰<span>Notícias</span></a>
+
+        <a href="/admin">⚙️<span>Admin</span></a>
+    </nav>
+
+</body>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/static/service-worker.js")
+            .then(() => console.log("Service Worker registrado!"))
+            .catch(err => console.log(err));
+    });
+}
+</script>
+
+
+
+
+
+
+</html>

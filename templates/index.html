@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Portal Grêmio
+{% endblock %}
+
+{% block conteudo %}
+
+<section class="card">
+
+    <h2>📢 Avisos</h2>
+
+    {% if avisos %}
+
+        {% for aviso in avisos %}
+
+            <div class="card">
+
+                <h3>{{ aviso.titulo }}</h3>
+
+                <p>{{ aviso.descricao }}</p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>Nenhum aviso disponível.</p>
+
+    {% endif %}
+
+</section>
+
+<section class="card">
+    <h2>📅 Próximos Eventos</h2>
+    <p>Nenhum evento cadastrado.</p>
+</section>
+
+<section class="card">
+    <h2>📰 Notícias</h2>
+    <p>Nenhuma notícia publicada.</p>
+</section>
+
+{% endblock %}
