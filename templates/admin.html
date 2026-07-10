@@ -58,4 +58,57 @@ Painel Administrativo
 
 </div>
 
+<div class="card">
+
+    <h2>Painel Administrativo</h2>
+
+    <form method="POST">
+
+        <label>Título</label>
+
+        <input
+    type="text"
+    name="titulo"
+    placeholder="Digite a data do evento"
+    required>
+
+        <label>Descrição</label>
+
+        <textarea
+    rows="5"
+    name="descricao"
+    placeholder="Digite como vai ser o evento"
+    required
+></textarea>
+
+<hr>
+
+<h2>Eventos publicados</h2>
+
+{% for aviso in eventos %}
+
+<div class="card">
+
+    <h3>{{ eventos.titulo }}</h3>
+
+    <p>{{ eventos.descricao }}</p>
+
+</div>
+
+{% endfor %}
+
+
+        <button type="submit">
+            Publicar evento
+        </button>
+
+    </form>
+
+</div>
+
 {% endblock %}
+
+
+
+
+

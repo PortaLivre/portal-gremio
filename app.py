@@ -68,6 +68,7 @@ def admin():
     return render_template(
         "admin.html",
         avisos=avisos
+
     )
 
 
